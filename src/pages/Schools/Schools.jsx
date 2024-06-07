@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SingleSchool from "./SingleSchool";
-import LoadingSpinner from "../smallComponents/LoadingSpinner";
+import LoadingSpinner from "../../components/smallComponents/LoadingSpinner";
 
 const Schools = () => {
   const [locations, setLocations] = useState([]);
