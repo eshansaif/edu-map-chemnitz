@@ -8,11 +8,13 @@ import Kindergartens from "../pages/Kindergartens/Kindergartens";
 import KindergartenDetails from "../pages/Kindergartens/KindergartenDetails";
 import SocialChildProjects from "../pages/SocialChildProjects/SocialChildProjects";
 import SocialChildProjectDetails from "../pages/SocialChildProjects/SocialChildProjectDetails";
+import PageError from "../pages/PageError";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <PageError />,
     children: [
       {
         path: "/",

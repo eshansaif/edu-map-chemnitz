@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -27,29 +27,49 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link className="font-bold" to="/">
-                Home
-              </Link>
+              <NavLink to="/">
+                {({ isActive, isPending, isTransitioning }) => (
+                  <span className={isActive ? "active font-bold" : "font-bold"}>
+                    Home
+                  </span>
+                )}
+              </NavLink>
             </li>
             <li>
-              <Link className="font-bold" to="/schools">
-                All Schools
-              </Link>
+              <NavLink to="/schools">
+                {({ isActive, isPending, isTransitioning }) => (
+                  <span className={isActive ? "active font-bold" : "font-bold"}>
+                    Schools
+                  </span>
+                )}
+              </NavLink>
             </li>
             <li>
-              <Link className="font-bold" to="/kindergartens">
-                Kindergarten
-              </Link>
+              <NavLink to="/kindergartens">
+                {({ isActive, isPending, isTransitioning }) => (
+                  <span className={isActive ? "active font-bold" : "font-bold"}>
+                    Kindergartens
+                  </span>
+                )}
+              </NavLink>
             </li>
             <li>
-              <Link className="font-bold" to="/social-child-projects">
-                Social Child Project
-              </Link>
+              <NavLink to="/social-child-projects">
+                {({ isActive, isPending, isTransitioning }) => (
+                  <span className={isActive ? "active font-bold" : "font-bold"}>
+                    Social Child Projects
+                  </span>
+                )}
+              </NavLink>
             </li>
             <li>
-              <Link className="font-bold" to="">
-                Social Teenager Project
-              </Link>
+              <NavLink to="/social-teenager-projects">
+                {({ isActive, isPending, isTransitioning }) => (
+                  <span className={isActive ? "active font-bold" : "font-bold"}>
+                    Social Teenager Projects
+                  </span>
+                )}
+              </NavLink>
             </li>
             {/* <li>
               <a>Parent</a>
@@ -74,29 +94,49 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link className="font-bold" to="/">
-              Home
-            </Link>
+            <NavLink to="/">
+              {({ isActive, isPending, isTransitioning }) => (
+                <span className={isActive ? "active font-bold" : "font-bold"}>
+                  Home
+                </span>
+              )}
+            </NavLink>
           </li>
           <li>
-            <Link className="font-bold" to="/schools">
-              All Schools
-            </Link>
+            <NavLink to="/schools">
+              {({ isActive, isPending, isTransitioning }) => (
+                <span className={isActive ? "active font-bold" : "font-bold"}>
+                  Schools
+                </span>
+              )}
+            </NavLink>
           </li>
           <li>
-            <Link className="font-bold" to="/kindergartens">
-              Kindergarten
-            </Link>
+            <NavLink to="/kindergartens">
+              {({ isActive, isPending, isTransitioning }) => (
+                <span className={isActive ? "active font-bold" : "font-bold"}>
+                  Kindergartens
+                </span>
+              )}
+            </NavLink>
           </li>
           <li>
-            <Link className="font-bold" to="/social-child-projects">
-              Social Child Project
-            </Link>
+            <NavLink to="/social-child-projects">
+              {({ isActive, isPending, isTransitioning }) => (
+                <span className={isActive ? "active font-bold" : "font-bold"}>
+                  Social Child Projects
+                </span>
+              )}
+            </NavLink>
           </li>
           <li>
-            <Link className="font-bold" to="">
-              <a>Social Teenager Project</a>
-            </Link>
+            <NavLink to="/social-teenager-projects">
+              {({ isActive, isPending, isTransitioning }) => (
+                <span className={isActive ? "active font-bold" : "font-bold"}>
+                  Social Teenager Projects
+                </span>
+              )}
+            </NavLink>
           </li>
           {/* <li>
             <details>
