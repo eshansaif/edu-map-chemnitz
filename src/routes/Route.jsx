@@ -3,7 +3,9 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import Schools from "../pages/Schools/Schools";
 import SchoolDetails from "../pages/Schools/SchoolDetails";
-import CategoryMapViewer from "../components/CategoryMapViewer";
+import CategoryMapViewer from "../pages/CategoryMapViewer";
+import Kindergartens from "../pages/Kindergartens/Kindergartens";
+import KindergartenDetails from "../pages/Kindergartens/KindergartenDetails";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/school/:id",
         element: <SchoolDetails />,
+      },
+      {
+        path: "/kindergartens",
+        element: <Kindergartens />,
+      },
+      {
+        path: "/kindergarten/:id",
+        element: <KindergartenDetails />,
       },
       {
         path: "/map-viewer",

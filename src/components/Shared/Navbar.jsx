@@ -84,7 +84,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className="font-bold" to="">
+            <Link className="font-bold" to="/kindergartens">
               Kindergarten
             </Link>
           </li>

@@ -6,7 +6,7 @@ import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet.fullscreen";
 import "leaflet.fullscreen/Control.FullScreen.css";
-import LoadingSpinner from "./smallComponents/LoadingSpinner";
+import LoadingSpinner from "../components/smallComponents/LoadingSpinner";
 
 // Fix marker icon issue with Leaflet and Webpack
 delete L.Icon.Default.prototype._getIconUrl;
