@@ -37,12 +37,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="font-bold" to="">
+              <Link className="font-bold" to="/kindergartens">
                 Kindergarten
               </Link>
             </li>
             <li>
-              <Link className="font-bold" to="">
+              <Link className="font-bold" to="/social-child-projects">
                 Social Child Project
               </Link>
             </li>
@@ -89,7 +89,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className="font-bold" to="">
+            <Link className="font-bold" to="/social-child-projects">
               Social Child Project
             </Link>
           </li>

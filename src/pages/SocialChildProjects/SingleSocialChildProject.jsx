@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleKindergarten = ({ location }) => {
+const SingleSocialChildProject = ({ location }) => {
   return (
     <div className="card w-80 bg-base-100 shadow-xl">
       <div className="card-body">
-        <h2 className="card-title">{location?.properties?.BEZEICHNUNG}</h2>
+        <h2 className="card-title">{location?.properties?.TRAEGER}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <Link to={`/kindergarten/${location.id}`}>
+          <Link to={`/social-child-project/${location.id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
           <Link to={`/`}>
@@ -20,4 +20,4 @@ const SingleKindergarten = ({ location }) => {
   );
 };
 
-export default SingleKindergarten;
+export default SingleSocialChildProject;

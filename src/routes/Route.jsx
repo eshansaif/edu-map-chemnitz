@@ -6,6 +6,8 @@ import SchoolDetails from "../pages/Schools/SchoolDetails";
 import CategoryMapViewer from "../pages/CategoryMapViewer";
 import Kindergartens from "../pages/Kindergartens/Kindergartens";
 import KindergartenDetails from "../pages/Kindergartens/KindergartenDetails";
+import SocialChildProjects from "../pages/SocialChildProjects/SocialChildProjects";
+import SocialChildProjectDetails from "../pages/SocialChildProjects/SocialChildProjectDetails";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "/kindergarten/:id",
         element: <KindergartenDetails />,
+      },
+      {
+        path: "/social-child-projects",
+        element: <SocialChildProjects />,
+      },
+      {
+        path: "/social-child-project/:id",
+        element: <SocialChildProjectDetails />,
       },
       {
         path: "/map-viewer",
