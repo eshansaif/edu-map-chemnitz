@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -71,20 +77,6 @@ const Navbar = () => {
                 )}
               </NavLink>
             </li>
-            {/* <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li> */}
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl">
@@ -138,27 +130,48 @@ const Navbar = () => {
               )}
             </NavLink>
           </li>
-          {/* <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li> */}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Login</a>
-      </div>
+      {/* <div className="navbar-end flex gap-4">
+        <Link to={"/login"} className="btn btn-success">
+          Login
+        </Link>
+        <Link to={"/register"} className="btn btn-secondary">
+          Registration
+        </Link>
+      </div> */}
+      {!user?.email ? (
+        <div className="navbar-end flex gap-4">
+          <Link to={"/login"} className="btn btn-success">
+            Login
+          </Link>
+          <Link to={"/register"} className="btn btn-secondary">
+            Registration
+          </Link>
+        </div>
+      ) : (
+        <div className="navbar-end flex gap-4">
+          <div>
+            <Link to={"/dashboard"} className="btn btn-info">
+              Dashboard
+            </Link>
+          </div>
+
+          <div
+            className="avatar placeholder tooltip tooltip-bottom tooltip-primary"
+            data-tip={user?.displayName}
+          >
+            <div className="bg-neutral text-neutral-content rounded-full w-8 ">
+              <img src={user?.photoURL} alt="" />
+            </div>
+          </div>
+          <div>
+            <button className="btn btn-warning" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

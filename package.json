@@ -11,15 +11,20 @@
   },
   "dependencies": {
     "@types/leaflet-routing-machine": "^3.2.8",
+    "axios": "^1.7.2",
+    "firebase": "^10.12.2",
     "google-map-react": "^2.2.1",
     "leaflet": "^1.9.4",
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-routing-machine": "^3.2.12",
     "leaflet.fullscreen": "^3.0.2",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
     "react-leaflet": "^4.2.1",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
