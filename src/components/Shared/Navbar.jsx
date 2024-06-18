@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { BiLogIn } from "react-icons/bi";
 
 const Navbar = () => {
   const { user, logout, loading } = useAuth();
@@ -143,50 +144,44 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* <div className="navbar-end flex gap-4">
-        <Link to={"/login"} className="btn btn-success">
-          Login
-        </Link>
-        <Link to={"/register"} className="btn btn-secondary">
-          Registration
-        </Link>
-      </div> */}
+
       {!user?.email ? (
         <div className="navbar-end flex gap-4">
-          <Link to={"/login"} className="btn btn-success">
-            Login
-          </Link>
-          <Link to={"/register"} className="btn btn-secondary">
-            Registration
+          <Link
+            to={"/login"}
+            className="btn btn-success font-bold text-white flex justify-center items-center"
+          >
+            <BiLogIn className="font-bold text-lg" />
+            <span>Login</span>
           </Link>
         </div>
       ) : (
         <div className="navbar-end flex gap-4">
-          <div>
-            <Link to={"/dashboard"} className="btn btn-info">
-              Dashboard
-            </Link>
-          </div>
-
-          <div
-            className="avatar placeholder tooltip tooltip-bottom tooltip-primary"
-            data-tip={dbUser?.name}
-          >
-            <div className="bg-neutral text-neutral-content rounded-full w-8 ">
-              <img
-                src={
-                  dbUser?.photoURL
-                    ? dbUser?.photoURL
-                    : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
-                }
-                alt="user image"
-              />
+          <div className=" dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img alt={dbUser?.name} src={dbUser?.photoURL} />
+              </div>
             </div>
-          </div>
-          <div>
-            <button className="btn btn-warning" onClick={handleLogout}>
-              Logout
-            </button>
+            <ul
+              tabIndex={0}
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li className="font-bold">
+                <Link to="/dashboard">
+                  <a className="justify-between ">Profile</a>
+                </Link>
+              </li>
+              <li className="font-bold">
+                <button onClick={handleLogout}>
+                  <a>Logout</a>
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       )}

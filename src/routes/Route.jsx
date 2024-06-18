@@ -17,7 +17,7 @@ import DashboardHome from "../pages/dashboard/DashboardHome";
 import StatsDashboard from "../pages/dashboard/StatsDashboard";
 import AddRecipe from "../pages/dashboard/AddRecipe";
 import EditRecipe from "../pages/dashboard/EditRecipe";
-import RecipeDetails from "../pages/dashboard/RecipeDetails";
+import UserDetails from "../pages/dashboard/UserDetails";
 import MyRecipe from "../pages/dashboard/MyRecipe";
 import EditProfile from "../pages/dashboard/EditProfile";
 import ManageAllUsers from "../pages/dashboard/Admin/ManageAllUsers";
@@ -85,8 +85,8 @@ export const router = createBrowserRouter([
         element: <EditRecipe />,
       },
       {
-        path: "recipe-details/:id",
-        element: <RecipeDetails />,
+        path: "user-details/:id",
+        element: <UserDetails />,
       },
       {
         path: "profile/edit/:id",

@@ -112,7 +112,7 @@ export default function DashboardHome() {
 
       <div className="flex justify-center ">
         <Link to={`/dashboard/profile/edit/${userInfo?._id}`}>
-          <button className="btn btn-secondary btn-wide mt-4 ">
+          <button className="btn btn-neutral btn-wide mt-4 ">
             Edit Profile
           </button>
         </Link>

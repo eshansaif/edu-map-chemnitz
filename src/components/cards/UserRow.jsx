@@ -135,17 +135,17 @@ export default function UserRow({ user, setUsers, users }) {
       <td>{user?.status}</td>
       <td className="flex gap-2">
         <Link
-          to={`/dashboard/recipe-details/${user?._id}`}
+          to={`/dashboard/user-details/${user?._id}`}
           className="btn btn-xs btn-primary"
         >
           View
         </Link>
-        <Link
+        {/* <Link
           to={`/dashboard/edit-recipe/${user?._id}`}
           className="btn btn-xs btn-neutral"
         >
           Edit
-        </Link>
+        </Link> */}
         <button
           onClick={() => handleDelete(user?._id)}
           className="btn btn-xs btn-error"

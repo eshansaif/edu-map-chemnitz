@@ -28,7 +28,7 @@ export default function DashbaordLayout() {
         <div className=" mb-4">
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-neutral drawer-button lg:hidden"
           >
             <GiHamburgerMenu className="text-3xl" />
           </label>
