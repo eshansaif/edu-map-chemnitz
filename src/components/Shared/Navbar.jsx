@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
+  const [dbUser, setDbUser] = useState(null);
 
   const handleLogout = async () => {
     await logout();
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setDbUser(data));
+  }, [user, dbUser, loading]);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -159,10 +167,17 @@ const Navbar = () => {
 
           <div
             className="avatar placeholder tooltip tooltip-bottom tooltip-primary"
-            data-tip={user?.displayName}
+            data-tip={dbUser?.name}
           >
             <div className="bg-neutral text-neutral-content rounded-full w-8 ">
-              <img src={user?.photoURL} alt="" />
+              <img
+                src={
+                  dbUser?.photoURL
+                    ? dbUser?.photoURL
+                    : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                }
+                alt=""
+              />
             </div>
           </div>
           <div>

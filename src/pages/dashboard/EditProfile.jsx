@@ -9,6 +9,9 @@ export default function EditProfile() {
     email: "",
     phoneNumber: "",
     photoURL: "",
+    homeAddress: "",
+    latitude: "",
+    longitude: "",
     role: "",
   });
   const navigate = useNavigate();
@@ -23,6 +26,9 @@ export default function EditProfile() {
             email: data.email,
             phoneNumber: data.phoneNumber,
             photoURL: data.photoURL,
+            homeAddress: data.homeAddress,
+            latitude: data.latitude,
+            longitude: data.longitude,
             role: data.role,
           });
         });
@@ -128,6 +134,51 @@ export default function EditProfile() {
         </div>
         <div>
           <label
+            htmlFor="homeAddress"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Home Address
+          </label>
+          <textarea
+            type="text"
+            name="homeAddress"
+            value={formData.homeAddress}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          ></textarea>
+        </div>
+        <div>
+          <label
+            htmlFor="latitude"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Latitude
+          </label>
+          <input
+            type="number"
+            name="latitude"
+            value={formData.latitude}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="longitude"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Longitude
+          </label>
+          <input
+            type="number"
+            name="longitude"
+            value={formData.longitude}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div>
+          <label
             htmlFor="role"
             className="block text-sm font-medium text-gray-700"
           >
@@ -140,8 +191,8 @@ export default function EditProfile() {
             className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           >
             <option value="">Select Role</option>
-            <option value="chef">Chef</option>
-            <option value="user">User</option>
+            <option value="Student">Student</option>
+            <option value="Parents">Parents</option>
           </select>
         </div>
         <button

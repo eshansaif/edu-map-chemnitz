@@ -65,14 +65,8 @@ const Registration = () => {
         }
       } catch (error) {
         // Handle error based on its type
-        if (error.code === "auth/user-not-found") {
-          setError("User not found. Please check your email and password.");
-          // You can set an error state here to display a message in your UI
-        } else if (error.code === "auth/wrong-password") {
-          setError("Invalid password. Please try again.");
-          // You can set an error state here to display a message in your UI
-        } else if (error.code === "auth/invalid-credential") {
-          setError("Invalid email or password.");
+        if (error.code === "auth/email-already-exists") {
+          setError("User Already exist please login");
           // You can set an error state here to display a message in your UI
         } else {
           setError("An error occurred:", error.message);
