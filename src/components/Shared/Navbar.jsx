@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logout, loading } = useAuth();
   const [dbUser, setDbUser] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   useEffect(() => {

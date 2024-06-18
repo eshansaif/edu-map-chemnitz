@@ -58,8 +58,7 @@ const Registration = () => {
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  console.log(data);
-
+                  localStorage.setItem("token", data?.token);
                   swal("User Created Successfully");
                   navigate(from);
                 });

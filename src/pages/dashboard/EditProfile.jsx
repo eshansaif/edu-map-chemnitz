@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
 
 export default function EditProfile() {
-  const token = localStorage.getItem("token");
+  const { logout } = useAuth();
   const { id } = useParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -16,13 +18,30 @@ export default function EditProfile() {
     isAdmin: "",
   });
 
-  // console.log(formData);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (id) {
-      fetch(`http://localhost:3000/user/get/${id}`)
-        .then((response) => response.json())
+    if (!token) {
+      logout();
+      swal("You need to be logged in to edit your profile.");
+    }
+  }, [token, navigate]);
+
+  useEffect(() => {
+    if (id && token) {
+      fetch(`http://localhost:3000/user/get/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Unauthorized access");
+          }
+          return response.json();
+        })
         .then((data) => {
           setFormData({
             name: data.name,
@@ -35,9 +54,14 @@ export default function EditProfile() {
             role: data.role,
             isAdmin: data.isAdmin,
           });
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+          swal("You are not authorized to view this profile.");
+          navigate("/login");
         });
     }
-  }, [id]);
+  }, [id, token, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +77,7 @@ export default function EditProfile() {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(formData),
         }
@@ -144,7 +168,6 @@ export default function EditProfile() {
             Home Address
           </label>
           <textarea
-            type="text"
             name="homeAddress"
             value={formData.homeAddress}
             onChange={handleChange}

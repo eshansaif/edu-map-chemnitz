@@ -6,7 +6,6 @@ const GoogleLogin = () => {
 
   const handleGoogleSignIn = () => {
     googleLogin().then((data) => {
-      // localStorage.setItem("token", data?.token);
       if (data?.user?.email) {
         const userInfo = {
           email: data?.user?.email,
@@ -22,8 +21,8 @@ const GoogleLogin = () => {
         })
           .then((res) => res.json())
           .then((data) => {
+            localStorage.setItem("token", data?.token);
             console.log(data);
-            // localStorage.setItem("token", data?.token);
           });
       }
     });
