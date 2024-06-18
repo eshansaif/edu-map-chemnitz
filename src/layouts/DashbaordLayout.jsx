@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FcHome } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function DashbaordLayout() {
   const { logout, user, loading } = useAuth();
-
+  const navigate = useNavigate();
   const [dbUser, setDbUser] = useState(null);
 
   useEffect(() => {
@@ -46,10 +46,10 @@ export default function DashbaordLayout() {
           <div>
             <li>
               <Link
-                className="text-xl hidden md:block text-[#4a00ff] font-extrabold"
+                className="text-xl hidden md:block text-neutral font-extrabold"
                 to="/"
               >
-                Edu Map Chemnitz
+                EduMap Chemnitz
               </Link>
             </li>
 
@@ -86,7 +86,7 @@ export default function DashbaordLayout() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manage-recipes">
+                  <NavLink to="/dashboard/manage-users">
                     {({ isActive }) => (
                       <span
                         className={
@@ -95,7 +95,7 @@ export default function DashbaordLayout() {
                             : "font-bold"
                         }
                       >
-                        Manage All Recipes
+                        Manage All Users
                       </span>
                     )}
                   </NavLink>

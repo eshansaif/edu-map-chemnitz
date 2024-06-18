@@ -14,13 +14,13 @@ import Registration from "../pages/Registration";
 import PrivateRoute from "./PrivateRoute";
 import DashbaordLayout from "../layouts/DashbaordLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
-import ManageAllRecipe from "../pages/dashboard/ManageAllRecipe";
 import StatsDashboard from "../pages/dashboard/StatsDashboard";
 import AddRecipe from "../pages/dashboard/AddRecipe";
 import EditRecipe from "../pages/dashboard/EditRecipe";
 import RecipeDetails from "../pages/dashboard/RecipeDetails";
 import MyRecipe from "../pages/dashboard/MyRecipe";
 import EditProfile from "../pages/dashboard/EditProfile";
+import ManageAllUsers from "../pages/dashboard/Admin/ManageAllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -69,8 +69,8 @@ export const router = createBrowserRouter([
         element: <DashboardHome />,
       },
       {
-        path: "manage-recipes",
-        element: <ManageAllRecipe />,
+        path: "manage-users",
+        element: <ManageAllUsers />,
       },
       {
         path: "stats",

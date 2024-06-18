@@ -90,8 +90,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">
-          EduMap Chemnitz
+        <Link to="/" className="btn btn-ghost text-xl font-mono">
+          EduMap <span className="hidden md:block">Chemnitz</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
