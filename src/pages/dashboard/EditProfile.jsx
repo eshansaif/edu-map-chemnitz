@@ -84,14 +84,14 @@ export default function EditProfile() {
       );
       const result = await response.json();
       if (response.ok) {
-        alert("Profile updated successfully");
+        swal("Profile updated successfully");
         navigate("/dashboard");
       } else {
-        alert("Error updating profile: " + result.error);
+        swal("Error updating profile: " + result.error);
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      alert("An error occurred while updating the profile");
+      swal("An error occurred while updating the profile");
     }
   };
 

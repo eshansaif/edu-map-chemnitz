@@ -18,6 +18,8 @@ export default function DashbaordLayout() {
 
   const handleLogout = async () => {
     await logout();
+    localStorage.removeItem("token");
+    navigate("/login");
   };
   return (
     <div className="drawer lg:drawer-open">
