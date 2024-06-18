@@ -24,7 +24,11 @@ export default function DashboardHome() {
       <div className="flex justify-center items-center">
         <img
           className="btn-circle w-36 h-36"
-          src={userInfo?.photoURL}
+          src={
+            userInfo?.photoURL
+              ? userInfo?.photoURL
+              : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+          }
           alt="User Avatar"
         />
       </div>
@@ -94,7 +98,12 @@ export default function DashboardHome() {
         ""
       )}
       <p className="font-bold flex items-center gap-5">
-        Role: {userInfo?.role || "Not Assigned"}
+        Role:{" "}
+        {userInfo?.isAdmin === 1 ? (
+          "Admin"
+        ) : (
+          <>{userInfo?.role || "Not Assigned"}</>
+        )}
       </p>
 
       <p className="font-thin text-sm">

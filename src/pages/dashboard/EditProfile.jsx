@@ -13,7 +13,10 @@ export default function EditProfile() {
     latitude: "",
     longitude: "",
     role: "",
+    isAdmin: "",
   });
+
+  // console.log(formData);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,6 +33,7 @@ export default function EditProfile() {
             latitude: data.latitude,
             longitude: data.longitude,
             role: data.role,
+            isAdmin: data.isAdmin,
           });
         });
     }
@@ -177,24 +181,28 @@ export default function EditProfile() {
             className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div>
-          <label
-            htmlFor="role"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Role
-          </label>
-          <select
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="">Select Role</option>
-            <option value="Student">Student</option>
-            <option value="Parents">Parents</option>
-          </select>
-        </div>
+        {formData?.isAdmin === 1 ? (
+          ""
+        ) : (
+          <div>
+            <label
+              htmlFor="role"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Role
+            </label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">Select Role</option>
+              <option value="Student">Student</option>
+              <option value="Parents">Parents</option>
+            </select>
+          </div>
+        )}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded-md shadow-md hover:bg-blue-600"

@@ -21,6 +21,7 @@ const Registration = () => {
     const form = e.target;
     const email = form.email.value;
     const name = form.name.value;
+    const role = form.role.value;
     const password = form.password.value;
     const confirm_password = form.confirm_password.value;
 
@@ -44,6 +45,8 @@ const Registration = () => {
               const userInfo = {
                 email: data?.user?.email,
                 name: name,
+                role: role,
+                isAdmin: 0,
                 password: password,
               };
               fetch("http://localhost:3000/user", {
@@ -115,6 +118,24 @@ const Registration = () => {
                 name="email"
                 required
               />
+            </div>
+
+            <div>
+              <label
+                htmlFor="role"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Role
+              </label>
+              <select
+                required
+                name="role"
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="">Select Role</option>
+                <option value="Student">Student</option>
+                <option value="Parents">Parents</option>
+              </select>
             </div>
             <div className="form-control">
               <label className="label">

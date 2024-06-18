@@ -3,9 +3,18 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FcHome } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import { LuLogOut } from "react-icons/lu";
+import { useEffect, useState } from "react";
 
 export default function DashbaordLayout() {
-  const { logout, user } = useAuth();
+  const { logout, user, loading } = useAuth();
+
+  const [dbUser, setDbUser] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setDbUser(data));
+  }, [user, dbUser, loading]);
 
   const handleLogout = async () => {
     await logout();
@@ -38,7 +47,7 @@ export default function DashbaordLayout() {
                 className="text-xl hidden md:block text-[#4a00ff] font-extrabold"
                 to="/"
               >
-                Roshui Ghor
+                Edu Map Chemnitz
               </Link>
             </li>
 
@@ -57,36 +66,41 @@ export default function DashbaordLayout() {
                 )}
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/dashboard/stats">
-                {({ isActive }) => (
-                  <span
-                    className={
-                      isActive
-                        ? "text-blue-500 font-semibold underline"
-                        : "font-bold"
-                    }
-                  >
-                    Stats
-                  </span>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard/manage-recipes">
-                {({ isActive }) => (
-                  <span
-                    className={
-                      isActive
-                        ? "text-blue-500 font-semibold underline"
-                        : "font-bold"
-                    }
-                  >
-                    Manage All Recipes
-                  </span>
-                )}
-              </NavLink>
-            </li>
+            {dbUser?.isAdmin === 1 && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/stats">
+                    {({ isActive }) => (
+                      <span
+                        className={
+                          isActive
+                            ? "text-blue-500 font-semibold underline"
+                            : "font-bold"
+                        }
+                      >
+                        Stats
+                      </span>
+                    )}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manage-recipes">
+                    {({ isActive }) => (
+                      <span
+                        className={
+                          isActive
+                            ? "text-blue-500 font-semibold underline"
+                            : "font-bold"
+                        }
+                      >
+                        Manage All Recipes
+                      </span>
+                    )}
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <li>
               <NavLink to="/dashboard/add-recipe">
                 {({ isActive }) => (

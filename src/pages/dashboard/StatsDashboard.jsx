@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import axios from "axios";
+import LoadingSpinner from "../../components/smallComponents/LoadingSpinner";
 
 // Register the components
 ChartJS.register(
@@ -40,25 +41,30 @@ const StatsDashboard = () => {
   }, []);
 
   if (!stats) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   const {
     totalUsers,
-    totalChefs,
+    totalStudents,
+    totalParents,
     totalRecipes,
     totalCategories,
     categoryWiseRecipes,
   } = stats;
 
-  console.log(categoryWiseRecipes);
-
   const barData = {
-    labels: ["Users", "Chefs", "Recipes", "Categories"],
+    labels: ["Users", "Students", "Parents", "Recipes", "Categories"],
     datasets: [
       {
         label: "Total Count",
-        data: [totalUsers, totalChefs, totalRecipes, totalCategories],
+        data: [
+          totalUsers,
+          totalStudents,
+          totalParents,
+          totalRecipes,
+          totalCategories,
+        ],
         backgroundColor: [
           "rgba(75, 192, 192, 0.6)",
           "rgba(153, 102, 255, 0.6)",

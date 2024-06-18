@@ -27,16 +27,18 @@ const Login = () => {
     } catch (error) {
       // Handle error based on its type
       if (error.code === "auth/user-not-found") {
-        setError("User not found. Please check your email and password.");
+        return setError(
+          "User not found. Please check your email and password."
+        );
         // You can set an error state here to display a message in your UI
       } else if (error.code === "auth/wrong-password") {
-        setError("Invalid password. Please try again.");
+        return setError("Invalid password. Please try again.");
         // You can set an error state here to display a message in your UI
       } else if (error.code === "auth/invalid-credential") {
-        setError("Invalid email or password.");
+        return setError("Invalid email or password.");
         // You can set an error state here to display a message in your UI
       } else {
-        setError("An error occurred:", error.message);
+        return setError("An error occurred:", error.message);
         // You can set an error state here to display a generic error message in your UI
       }
     }

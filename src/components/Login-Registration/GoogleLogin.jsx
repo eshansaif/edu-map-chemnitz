@@ -11,6 +11,7 @@ const GoogleLogin = () => {
         const userInfo = {
           email: data?.user?.email,
           name: data?.user?.displayName,
+          isAdmin: 0,
         };
         fetch("http://localhost:3000/user", {
           method: "POST",
