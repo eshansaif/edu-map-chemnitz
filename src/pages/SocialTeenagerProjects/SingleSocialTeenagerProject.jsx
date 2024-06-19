@@ -5,9 +5,10 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const SingleSocialTeenagerProject = ({ location }) => {
-  const { user } = useAuth(); // Get the user from your authentication context
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     const checkIfFavorite = async () => {
@@ -18,14 +19,22 @@ const SingleSocialTeenagerProject = ({ location }) => {
           );
           const favorites = response.data;
 
-          // Check if the current location is already in the user's favorites
+          console.log(favorites);
+
+          // Check if the current location is already in the user's favorites, including the category in the check
           const alreadyFavorite = favorites.some(
-            (fav) => fav.location.id === location.id
+            (fav) =>
+              fav.location.id === location.id &&
+              fav.location.category === "Social Teenager Project"
           );
           setIsFavorite(alreadyFavorite);
         } catch (error) {
           console.error("Error fetching favorites:", error);
+        } finally {
+          setLoading(false); // Set loading to false after the check
         }
+      } else {
+        setLoading(false); // Set loading to false if no user is logged in
       }
     };
 
@@ -34,7 +43,6 @@ const SingleSocialTeenagerProject = ({ location }) => {
 
   const handleAddToFavorite = async () => {
     if (!user) {
-      // If the user is not logged in, redirect to login or show a message
       alert("You must be logged in to add to favorites.");
       return navigate("/login");
     }
@@ -84,9 +92,13 @@ const SingleSocialTeenagerProject = ({ location }) => {
           <button
             className="btn btn-secondary"
             onClick={handleAddToFavorite}
-            disabled={isFavorite}
+            disabled={isFavorite || loading} // Disable button during loading or if already favorite
           >
-            {isFavorite ? "Already Added" : "Add To Favorite"}
+            {loading
+              ? "Loading..."
+              : isFavorite
+              ? "Already Added"
+              : "Add To Favorite"}
           </button>
         </div>
       </div>
