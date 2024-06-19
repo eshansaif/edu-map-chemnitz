@@ -17,7 +17,6 @@ export default function ManageAllUsers() {
           },
         });
         if (response.status === 200) {
-          console.log(response.data);
           setUsers(response.data);
         }
       } catch (error) {
@@ -36,11 +35,15 @@ export default function ManageAllUsers() {
   };
 
   const filteredUsers = users.filter((user) => {
-    const matchesName = user.name
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesStatus =
-      statusFilter === "all" || user.status === statusFilter;
+    const matchesName = user?.name
+      ?.toLowerCase()
+      ?.includes(searchQuery?.toLowerCase());
+    let matchesStatus;
+    if (statusFilter === "admin") {
+      matchesStatus = user.isAdmin === 1;
+    } else {
+      matchesStatus = statusFilter === "all" || user.status === statusFilter;
+    }
     return matchesName && matchesStatus;
   });
 
@@ -66,6 +69,7 @@ export default function ManageAllUsers() {
             <option value="all">All Users</option>
             <option value="active">Active Users</option>
             <option value="deleted">Deleted Users</option>
+            <option value="admin">Admin Users</option>
           </select>
         </div>
       </div>
@@ -80,6 +84,7 @@ export default function ManageAllUsers() {
             <th>Phone Number</th>
             <th>Status</th>
             <th>Action</th>
+            <th>Change Admin</th>
           </tr>
         </thead>
         <tbody>

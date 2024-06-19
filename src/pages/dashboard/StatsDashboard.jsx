@@ -48,45 +48,39 @@ const StatsDashboard = () => {
     totalUsers,
     totalStudents,
     totalParents,
-    totalRecipes,
-    totalCategories,
-    categoryWiseRecipes,
+    activeUsersCount,
+    deletedUsersCount,
+    totalAdmins,
   } = stats;
 
   const barData = {
-    labels: ["Users", "Students", "Parents", "Recipes", "Categories"],
+    labels: [
+      "All Users",
+      "Total Admins",
+      "Students",
+      "Parents",
+      "Active Users",
+      "Delete dUsers",
+    ],
     datasets: [
       {
         label: "Total Count",
         data: [
           totalUsers,
+          totalAdmins,
           totalStudents,
           totalParents,
-          totalRecipes,
-          totalCategories,
+          activeUsersCount,
+          deletedUsersCount,
         ],
         backgroundColor: [
           "rgba(75, 192, 192, 0.6)",
+          "yellow",
           "rgba(153, 102, 255, 0.6)",
           "rgba(255, 159, 64, 0.6)",
           "rgba(255, 99, 132, 0.6)",
+          "red",
         ],
-      },
-    ],
-  };
-
-  const pieData = {
-    labels: categoryWiseRecipes.map((category) => category.category),
-    datasets: [
-      {
-        label: "Recipes by Category",
-        data: categoryWiseRecipes.map((category) => category.recipeCount),
-        backgroundColor: categoryWiseRecipes.map(
-          (_, index) =>
-            `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
-              Math.random() * 255
-            )}, ${Math.floor(Math.random() * 255)}, 0.6)`
-        ),
       },
     ],
   };
@@ -96,17 +90,11 @@ const StatsDashboard = () => {
       <h1 className="text-center font-mono font-bold text-3xl underline">
         Statistics of the System
       </h1>
-      <div className="md:flex justify-between gap-24 md:gap-12">
-        <div className="md:w-1/2 mb-12">
+      <div className="">
+        <div className="mb-12">
           <Bar data={barData} options={{ responsive: true }} />
           <p className="font-mono font-thin underline text-center">
             Total Counts
-          </p>
-        </div>
-        <div className="md:w-1/2">
-          <Pie data={pieData} options={{ responsive: true }} />
-          <p className="font-mono font-thin underline text-center">
-            Recipes by Category
           </p>
         </div>
       </div>
