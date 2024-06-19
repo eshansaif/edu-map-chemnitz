@@ -104,7 +104,7 @@ export default function DashbaordLayout() {
             )}
 
             <li>
-              <NavLink to="/dashboard/add-recipe">
+              <NavLink to="/dashboard/add-location">
                 {({ isActive }) => (
                   <span
                     className={
@@ -113,7 +113,7 @@ export default function DashbaordLayout() {
                         : "font-bold"
                     }
                   >
-                    Add Recipe
+                    Add Location
                   </span>
                 )}
               </NavLink>

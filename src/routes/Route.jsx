@@ -15,7 +15,6 @@ import PrivateRoute from "./PrivateRoute";
 import DashbaordLayout from "../layouts/DashbaordLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import StatsDashboard from "../pages/dashboard/StatsDashboard";
-import AddRecipe from "../pages/dashboard/AddRecipe";
 import EditRecipe from "../pages/dashboard/EditRecipe";
 import UserDetails from "../pages/dashboard/UserDetails";
 import EditProfile from "../pages/dashboard/EditProfile";
@@ -26,6 +25,7 @@ import MyFavList from "../pages/dashboard/MyFavList";
 import Impressum from "../pages/Impressum";
 import Documentation from "../pages/Doucmentation";
 import LinkToSources from "../pages/LinkToSources";
+import AddLocation from "../pages/dashboard/AddLocation";
 
 export const router = createBrowserRouter([
   {
@@ -102,8 +102,8 @@ export const router = createBrowserRouter([
         element: <StatsDashboard />,
       },
       {
-        path: "add-recipe",
-        element: <AddRecipe />,
+        path: "add-location",
+        element: <AddLocation />,
       },
       {
         path: "edit-recipe/:id",
