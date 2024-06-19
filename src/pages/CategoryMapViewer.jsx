@@ -72,12 +72,18 @@ const CategoryMapViewer = () => {
             id="category"
             onChange={handleCategoryChange}
             value={selectedCategory}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 rounded-md font-bold "
           >
-            <option value="schools">Schools</option>
-            <option value="kindergarden">Kindergarden</option>
-            <option value="social_child_projects">Social Child Projects</option>
-            <option value="social_teenager_projects">
+            <option className="font-semibold" value="schools">
+              Schools
+            </option>
+            <option className="font-semibold" value="kindergarden">
+              Kindergarden
+            </option>
+            <option className="font-semibold" value="social_child_projects">
+              Social Child Projects
+            </option>
+            <option className="font-semibold" value="social_teenager_projects">
               Social Teenager Projects
             </option>
           </select>
