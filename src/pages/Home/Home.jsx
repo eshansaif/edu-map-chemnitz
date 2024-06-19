@@ -12,17 +12,17 @@ const Home = () => {
     {
       id: 2,
       title: "Impressum",
-      to: "",
+      to: "/impressum",
     },
     {
       id: 3,
       title: "Documentation",
-      to: "",
+      to: "/documentation",
     },
     {
       id: 4,
       title: "Link To Sources",
-      to: "",
+      to: "/link-to-sources",
     },
   ];
   return (

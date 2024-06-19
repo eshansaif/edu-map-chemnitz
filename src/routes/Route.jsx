@@ -23,6 +23,9 @@ import ManageAllUsers from "../pages/dashboard/Admin/ManageAllUsers";
 import SocialTeenagerProjects from "../pages/SocialTeenagerProjects/SocialTeenagerProjects";
 import SocialTeenagerProjectDetails from "../pages/SocialTeenagerProjects/SocialTeenagerProjectDetails";
 import MyFavList from "../pages/dashboard/MyFavList";
+import Impressum from "../pages/Impressum";
+import Documentation from "../pages/Doucmentation";
+import LinkToSources from "../pages/LinkToSources";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ export const router = createBrowserRouter([
       {
         path: "/map-viewer",
         element: <CategoryMapViewer />,
+      },
+      {
+        path: "/impressum",
+        element: <Impressum />,
+      },
+      {
+        path: "/documentation",
+        element: <Documentation />,
+      },
+      {
+        path: "/link-to-sources",
+        element: <LinkToSources />,
       },
     ],
   },
