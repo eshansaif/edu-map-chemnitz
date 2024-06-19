@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/smallComponents/LoadingSpinner";
-import SingleSocialChildProject from "./SingleSocialChildProject";
+import SingleSocialTeenagerProject from "./SingleSocialTeenagerProject";
 
-const SocialChildProjects = () => {
+const SocialTeenagerProjects = () => {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch(
-      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Schulsozialarbeit_FL_1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
+      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Jugendberufshilfen_FL_1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
     )
       .then((response) => response.json())
       .then((data) => {
@@ -60,7 +60,10 @@ const SocialChildProjects = () => {
       <div className="flex justify-center items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filteredLocations.map((location) => (
-            <SingleSocialChildProject key={location.id} location={location} />
+            <SingleSocialTeenagerProject
+              key={location.id}
+              location={location}
+            />
           ))}
         </div>
       </div>
@@ -68,4 +71,4 @@ const SocialChildProjects = () => {
   );
 };
 
-export default SocialChildProjects;
+export default SocialTeenagerProjects;

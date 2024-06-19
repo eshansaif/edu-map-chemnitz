@@ -120,7 +120,7 @@ export default function DashbaordLayout() {
             </li>
             <li>
               {/* <Link to={"/dashboard/add-recipe"}>Add Recipe</Link> */}
-              <NavLink to={`/dashboard/my-recipe/${user?.email}`}>
+              <NavLink to={`/dashboard/my-favorite/${user?.email}`}>
                 {({ isActive }) => (
                   <span
                     className={
@@ -129,7 +129,7 @@ export default function DashbaordLayout() {
                         : "font-bold"
                     }
                   >
-                    My Recipe
+                    Favorite Locations
                   </span>
                 )}
               </NavLink>

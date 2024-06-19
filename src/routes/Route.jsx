@@ -18,9 +18,11 @@ import StatsDashboard from "../pages/dashboard/StatsDashboard";
 import AddRecipe from "../pages/dashboard/AddRecipe";
 import EditRecipe from "../pages/dashboard/EditRecipe";
 import UserDetails from "../pages/dashboard/UserDetails";
-import MyRecipe from "../pages/dashboard/MyRecipe";
 import EditProfile from "../pages/dashboard/EditProfile";
 import ManageAllUsers from "../pages/dashboard/Admin/ManageAllUsers";
+import SocialTeenagerProjects from "../pages/SocialTeenagerProjects/SocialTeenagerProjects";
+import SocialTeenagerProjectDetails from "../pages/SocialTeenagerProjects/SocialTeenagerProjectDetails";
+import MyFavList from "../pages/dashboard/MyFavList";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "/social-child-project/:id",
         element: <SocialChildProjectDetails />,
+      },
+      {
+        path: "/social-teenager-projects",
+        element: <SocialTeenagerProjects />,
+      },
+      {
+        path: "/social-teenager-project/:id",
+        element: <SocialTeenagerProjectDetails />,
       },
       {
         path: "/map-viewer",
@@ -93,8 +103,8 @@ export const router = createBrowserRouter([
         element: <EditProfile />,
       },
       {
-        path: "my-recipe/:email",
-        element: <MyRecipe />,
+        path: "my-favorite/:email",
+        element: <MyFavList />,
       },
     ],
   },

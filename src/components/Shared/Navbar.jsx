@@ -156,15 +156,25 @@ const Navbar = () => {
           </Link>
         </div>
       ) : (
-        <div className="navbar-end flex gap-4">
+        <div
+          className="navbar-end flex gap-4 tooltip tooltip-bottom"
+          data-tip={`${dbUser?.name}, Please on the image to see more options to navigate`}
+        >
           <div className=" dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
-                <img alt={dbUser?.name} src={dbUser?.photoURL} />
+              <div className="w-10 rounded-full tooltip">
+                <img
+                  alt={dbUser?.name ? dbUser?.name : "Name is not updated yet"}
+                  src={
+                    dbUser?.photoURL
+                      ? dbUser?.photoURL
+                      : "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+                  }
+                />
               </div>
             </div>
             <ul
