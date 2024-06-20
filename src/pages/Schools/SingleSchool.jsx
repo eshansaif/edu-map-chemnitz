@@ -22,7 +22,8 @@ const SingleSchool = ({ location }) => {
           // Check if the current location is already in the user's favorites
           const alreadyFavorite = favorites.some(
             (fav) =>
-              fav.location.id === location.id &&
+              (fav.location.id || fav.location._id) ===
+                (location.id || location?._id) &&
               fav.location?.category === "School"
           );
           setIsFavorite(alreadyFavorite);
@@ -37,7 +38,7 @@ const SingleSchool = ({ location }) => {
     };
 
     checkIfFavorite();
-  }, [user, location.id]);
+  }, [user, location.id || location?._id]);
 
   const handleAddToFavorite = async () => {
     if (!user) {
@@ -50,9 +51,9 @@ const SingleSchool = ({ location }) => {
       const favoriteData = {
         userEmail: user?.email,
         location: {
-          id: location.id,
+          id: location.id || location?._id,
           name: location.properties.BEZEICHNUNG,
-          url: `school/${location?.id}`,
+          url: `school/${location?.id || location?._id}`,
           category: "School",
         },
       };

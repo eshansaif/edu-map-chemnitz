@@ -10,23 +10,50 @@ const MyFavList = () => {
     if (user) {
       fetch(`http://localhost:3000/user/favorite/${user?.email}`)
         .then((res) => res.json())
-        .then((data) => setMyFavList(data));
+        .then((data) => setMyFavList(data.reverse()));
     }
-  }, [user]);
+  }, [user, myFavList]);
 
-  const removeFavorite = (locationId) => {
-    fetch(`http://localhost:3000/user/favorite/${user?.email}/${locationId}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setMyFavList((prevList) =>
-            prevList.filter((fav) => fav?._id !== locationId)
+  const removeFavorite = async (locationId) => {
+    await swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to see this in your favorites list!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        try {
+          const response = await fetch(
+            `http://localhost:3000/user/favorite/${user?.email}/${locationId}`,
+            {
+              method: "DELETE",
+            }
           );
+          const data = await response.json();
+
+          if (data.status === "success") {
+            swal("You have removed the favorite successfully!", {
+              icon: "success",
+            });
+            setMyFavList((prevList) =>
+              prevList.filter((fav) => fav?._id !== locationId)
+            );
+          } else {
+            swal("Error removing favorite!", {
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          console.error("Error removing favorite:", error);
+          swal("Error removing favorite!", {
+            icon: "error",
+          });
         }
-      })
-      .catch((error) => console.error("Error removing favorite:", error));
+      } else {
+        swal("Favorite is not deleted!");
+      }
+    });
   };
 
   return (
@@ -36,7 +63,7 @@ const MyFavList = () => {
       </h1>
 
       {myFavList.length === 0 ? (
-        <p>No Location found!</p>
+        <p>No Favorite Location Added yet!</p>
       ) : (
         <div className="grid md:grid-cols-4 gap-6 mb-4">
           {myFavList.map((fav) => (

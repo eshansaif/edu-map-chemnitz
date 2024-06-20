@@ -22,7 +22,8 @@ const SingleSocialChildProject = ({ location }) => {
           // Check if the current location is already in the user's favorites
           const alreadyFavorite = favorites.some(
             (fav) =>
-              fav.location.id === location.id &&
+              (fav.location.id || fav.location._id) ===
+                (location.id || location?._id) &&
               fav.location.category === "Social Child Project"
           );
           setIsFavorite(alreadyFavorite);
@@ -37,7 +38,7 @@ const SingleSocialChildProject = ({ location }) => {
     };
 
     checkIfFavorite();
-  }, [user, location.id]);
+  }, [user, location.id || location?._id]);
 
   const handleAddToFavorite = async () => {
     if (!user) {
@@ -50,9 +51,9 @@ const SingleSocialChildProject = ({ location }) => {
       const favoriteData = {
         userEmail: user?.email,
         location: {
-          id: location.id,
+          id: location.id || location?._id,
           name: location.properties.TRAEGER,
-          url: `social-child-project/${location?.id}`,
+          url: `social-child-project/${location?.id || location?._id}`,
           category: "Social Child Project",
         },
       };
@@ -85,7 +86,7 @@ const SingleSocialChildProject = ({ location }) => {
         <h2 className="card-title">{location?.properties?.TRAEGER}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end flex">
-          <Link to={`/social-child-project/${location.id}`}>
+          <Link to={`/social-child-project/${location.id || location?._id}}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
           <button

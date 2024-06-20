@@ -24,7 +24,8 @@ const SingleSocialTeenagerProject = ({ location }) => {
           // Check if the current location is already in the user's favorites, including the category in the check
           const alreadyFavorite = favorites.some(
             (fav) =>
-              fav.location.id === location.id &&
+              (fav.location.id || fav.location._id) ===
+                (location.id || location?._id) &&
               fav.location.category === "Social Teenager Project"
           );
           setIsFavorite(alreadyFavorite);
@@ -39,7 +40,7 @@ const SingleSocialTeenagerProject = ({ location }) => {
     };
 
     checkIfFavorite();
-  }, [user, location.id]);
+  }, [user, location.id || location?._id]);
 
   const handleAddToFavorite = async () => {
     if (!user) {
@@ -51,9 +52,9 @@ const SingleSocialTeenagerProject = ({ location }) => {
       const favoriteData = {
         userEmail: user?.email,
         location: {
-          id: location.id,
+          id: location.id || location?._id,
           name: location.properties.TRAEGER,
-          url: `social-teenager-project/${location?.id}`,
+          url: `social-teenager-project/${location?.id || location?._id}`,
           category: "Social Teenager Project",
         },
       };

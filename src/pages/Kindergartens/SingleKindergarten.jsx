@@ -22,7 +22,8 @@ const SingleKindergarten = ({ location }) => {
           // Check if the current location is already in the user's favorites
           const alreadyFavorite = favorites.some(
             (fav) =>
-              fav.location.id === location.id &&
+              (fav.location.id || fav.location._id) ===
+                (location.id || location?._id) &&
               fav.location?.category === "Kindergarten"
           );
           setIsFavorite(alreadyFavorite);
@@ -37,7 +38,7 @@ const SingleKindergarten = ({ location }) => {
     };
 
     checkIfFavorite();
-  }, [user, location.id]);
+  }, [user, location.id || location?._id]);
 
   const handleAddToFavorite = async () => {
     if (!user) {
@@ -50,9 +51,9 @@ const SingleKindergarten = ({ location }) => {
       const favoriteData = {
         userEmail: user?.email,
         location: {
-          id: location.id,
+          id: location.id || location?._id,
           name: location.properties.BEZEICHNUNG,
-          url: `kindergarten/${location?.id}`,
+          url: `kindergarten/${location?.id || location?._id}`,
           category: "Kindergarten",
         },
       };
@@ -85,7 +86,7 @@ const SingleKindergarten = ({ location }) => {
         <h2 className="card-title">{location?.properties?.BEZEICHNUNG}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <Link to={`/kindergarten/${location.id}`}>
+          <Link to={`/kindergarten/${location.id || location?._id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
           <button
