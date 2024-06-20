@@ -63,7 +63,7 @@ const ViewSocialTeenagerProjectsLocations = () => {
         <table className="table table-zebra">
           <thead>
             <tr>
-              <th>ID</th>
+              <th>SL.</th>
               <th>TRAEGER</th>
               <th>LEISTUNGEN</th>
               <th>STRASSE</th>

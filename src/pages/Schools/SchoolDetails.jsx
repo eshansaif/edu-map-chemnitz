@@ -45,9 +45,7 @@ const SchoolDetails = () => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    fetch(
-      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Schulen_OpenData/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson#"
-    )
+    fetch("http://localhost:3000/locations/schools")
       .then((res) => res.json())
       .then((data) => {
         setLocations(data.features);
@@ -66,7 +64,9 @@ const SchoolDetails = () => {
 
   useEffect(() => {
     if (locations.length > 0) {
-      const single = locations.find((location) => location.id == id);
+      const single = locations.find(
+        (location) => location?.id == id || location?._id == id
+      );
       setDetails(single);
     }
   }, [locations, id]);

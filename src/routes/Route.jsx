@@ -28,6 +28,7 @@ import LinkToSources from "../pages/LinkToSources";
 import AddSocialTeenagerProjectsLocation from "../pages/dashboard/Locations/SocialTeenagerProject/AddSocialTeenagerProjectsLocation";
 import ViewSocialTeenagerProjectsLocations from "../pages/dashboard/Locations/SocialTeenagerProject/ViewSocialTeenagerProjectsLocations";
 import AddSchoolsLocation from "../pages/dashboard/Locations/SchoolLocation/AddSchoolsLocation";
+import ViewSchoolsLocations from "../pages/dashboard/Locations/SchoolLocation/ViewSchoolsLocations";
 
 export const router = createBrowserRouter([
   {
@@ -109,7 +110,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "view-location/schools",
-        element: <ViewSocialTeenagerProjectsLocations />,
+        element: <ViewSchoolsLocations />,
       },
       {
         path: "add-location/social-teenager-project",

@@ -85,7 +85,7 @@ const SingleSchool = ({ location }) => {
         <h2 className="card-title">{location?.properties?.BEZEICHNUNG}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end flex">
-          <Link to={`/school/${location.id}`}>
+          <Link to={`/school/${location.id || location?._id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
           <button

@@ -26,6 +26,7 @@ const AddSchoolsLocation = () => {
     e.preventDefault();
     const form = e.target;
     const BEZEICHNUNG = form.BEZEICHNUNG.value;
+    const TYP = form.TYP.value;
     const ART = form.ART.value;
     const BEZEICHNUNGZUSATZ = form.BEZEICHNUNGZUSATZ.value;
     const STRASSE = form.STRASSE.value;
@@ -57,6 +58,7 @@ const AddSchoolsLocation = () => {
       },
       properties: {
         BEZEICHNUNG,
+        TYP,
         ART,
         BEZEICHNUNGZUSATZ,
         STRASSE,
@@ -128,6 +130,15 @@ const AddSchoolsLocation = () => {
             required
             type="text"
             name="BEZEICHNUNG"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="TYP">TYP </label>
+          <input
+            required
+            type="text"
+            name="TYP"
             className="w-full py-3 px-5 border"
           />
         </div>
