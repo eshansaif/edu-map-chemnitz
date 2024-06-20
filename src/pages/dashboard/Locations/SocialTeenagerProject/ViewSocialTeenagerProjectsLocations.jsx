@@ -24,7 +24,7 @@ const ViewSocialTeenagerProjectsLocations = () => {
 
     await swal({
       title: "Are you sure?",
-      text: "Once added, you will be able to see this in your location list!",
+      text: "Once delete, you will not be able to see this in your location list!",
       icon: "warning",
       buttons: true,
       dangerMode: true,

@@ -2,14 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const ViewSchoolsLocations = () => {
+const ViewSocialChildProjectsLocations = () => {
   let serialNo = 1;
   const [locations, setLocations] = useState([]);
   useEffect(() => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/schools"
+          "http://localhost:3000/locations/social-child-projects"
         );
         setLocations(response?.data?.features?.reverse());
       } catch (error) {
@@ -32,7 +32,7 @@ const ViewSchoolsLocations = () => {
       if (willAdd) {
         try {
           const response = await axios.delete(
-            `http://localhost:3000/location/school/${id}`
+            `http://localhost:3000/location/social-child-project/${id}`
           );
           console.log("Location deleted response:", response);
           swal("You Have Removed the Location Successfully!", {
@@ -56,7 +56,7 @@ const ViewSchoolsLocations = () => {
   return (
     <div className="overflow-x-auto w-full px-16 mt-3">
       <h2 className="text-3xl mt-2 mb-4 text-center underline">
-        All Locations of Social Teenager Projects
+        All Locations of Social Child Projects
       </h2>
 
       <div className="overflow-x-auto">
@@ -65,26 +65,16 @@ const ViewSchoolsLocations = () => {
             <tr>
               <th>SL.</th>
               <th>Action</th>
+              <th>TRAEGER</th>
               <th>BEZEICHNUNG</th>
-              <th>TYP</th>
-              <th>ART</th>
-              <th>BEZEICHNUNGZUSATZ</th>
+              <th>KURZBEZEICHNUNG</th>
+              <th>LEISTUNGEN</th>
               <th>STRASSE</th>
               <th>PLZ</th>
               <th>ORT</th>
               <th>TELEFON</th>
-              <th>EMAIL</th>
               <th>FAX</th>
-              <th>PROFILE</th>
-              <th>WWW</th>
-              <th>TRAEGER</th>
-              <th>BEZUGNR</th>
-              <th>GEBIETSARTNUMMER</th>
-              <th>SNUMMER</th>
-              <th>NUMMER</th>
-              <th>Creator</th>
-              <th>GlobalID</th>
-              <th>CreationDate</th>
+              <th>EMAIL</th>
             </tr>
           </thead>
           <tbody>
@@ -92,7 +82,11 @@ const ViewSchoolsLocations = () => {
               <tr key={location?.id || location?._id}>
                 <th>{serialNo++}</th>
                 <td className="flex gap-1">
-                  <Link to={`/../school/${location?.id || location?._id}`}>
+                  <Link
+                    to={`/../social-child-project/${
+                      location?.id || location?._id
+                    }`}
+                  >
                     <button className="btn btn-primary btn-xs">View</button>
                   </Link>
                   <button
@@ -104,23 +98,23 @@ const ViewSchoolsLocations = () => {
                   </button>
                 </td>
                 <td>
+                  {location?.properties?.TRAEGER
+                    ? location?.properties?.TRAEGER
+                    : "Not Found"}
+                </td>
+                <td>
                   {location?.properties?.BEZEICHNUNG
                     ? location?.properties?.BEZEICHNUNG
                     : "Not Found"}
                 </td>
                 <td>
-                  {location?.properties?.TYP
-                    ? location?.properties?.TYP
+                  {location?.properties?.KURZBEZEICHNUNG
+                    ? location?.properties?.KURZBEZEICHNUNG
                     : "Not Found"}
                 </td>
                 <td>
-                  {location?.properties?.ART
-                    ? location?.properties?.ART
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.BEZEICHNUNGZUSATZ
-                    ? location?.properties?.BEZEICHNUNGZUSATZ
+                  {location?.properties?.LEISTUNGEN
+                    ? location?.properties?.LEISTUNGEN
                     : "Not Found"}
                 </td>
                 <td>
@@ -143,65 +137,10 @@ const ViewSchoolsLocations = () => {
                     ? location?.properties?.TELEFON
                     : "Not Found"}
                 </td>
-
-                <td>
-                  {location?.properties?.FAX
-                    ? location?.properties?.FAX
-                    : "Not Found"}
-                </td>
+                <td>{location?.properties?.FAX}</td>
                 <td>
                   {location?.properties?.EMAIL
                     ? location?.properties?.EMAIL
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.PROFILE
-                    ? location?.properties?.PROFILE
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.WWW
-                    ? location?.properties?.WWW
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.TRAEGER
-                    ? location?.properties?.TRAEGER
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.BEZUGNR
-                    ? location?.properties?.BEZUGNR
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.GEBIETSARTNUMMER
-                    ? location?.properties?.GEBIETSARTNUMMER
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.SNUMMER
-                    ? location?.properties?.SNUMMER
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.NUMMER
-                    ? location?.properties?.NUMMER
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.Creator
-                    ? location?.properties?.Creator
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.GlobalID
-                    ? location?.properties?.GlobalID
-                    : "Not Found"}
-                </td>
-                <td>
-                  {location?.properties?.CreationDate
-                    ? location?.properties?.CreationDate
                     : "Not Found"}
                 </td>
               </tr>
@@ -209,27 +148,16 @@ const ViewSchoolsLocations = () => {
           </tbody>
           <tfoot>
             <tr>
-              <th>SL.</th>
-              <th>Action</th>
-              <th>BEZEICHNUNG</th>
-              <th>ART</th>
-              <th>BEZEICHNUNGZUSATZ</th>
+              <th>ID</th>
+              <th>TRAEGER</th>
+              <th>LEISTUNGEN</th>
               <th>STRASSE</th>
               <th>PLZ</th>
               <th>ORT</th>
               <th>TELEFON</th>
-              <th>EMAIL</th>
               <th>FAX</th>
-              <th>PROFILE</th>
-              <th>WWW</th>
-              <th>TRAEGER</th>
-              <th>BEZUGNR</th>
-              <th>GEBIETSARTNUMMER</th>
-              <th>SNUMMER</th>
-              <th>NUMMER</th>
-              <th>Creator</th>
-              <th>GlobalID</th>
-              <th>CreationDate</th>
+              <th>EMAIL</th>
+              <th>Action</th>
             </tr>
           </tfoot>
         </table>
@@ -238,4 +166,4 @@ const ViewSchoolsLocations = () => {
   );
 };
 
-export default ViewSchoolsLocations;
+export default ViewSocialChildProjectsLocations;
