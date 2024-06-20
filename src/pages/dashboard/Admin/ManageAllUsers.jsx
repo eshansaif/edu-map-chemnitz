@@ -11,11 +11,14 @@ export default function ManageAllUsers() {
     async function loadUsers() {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:3000/users", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://edu-map-chemnitz-server.vercel.app/users",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.status === 200) {
           setUsers(response.data);
         }

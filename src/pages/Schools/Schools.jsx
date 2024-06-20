@@ -8,7 +8,7 @@ const Schools = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/locations/schools")
+    fetch("https://edu-map-chemnitz-server.vercel.app/locations/schools")
       .then((response) => response.json())
       .then((data) => {
         setLocations(data.features.reverse());

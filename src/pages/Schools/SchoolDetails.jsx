@@ -45,7 +45,7 @@ const SchoolDetails = () => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/locations/schools")
+    fetch("https://edu-map-chemnitz-server.vercel.app/locations/schools")
       .then((res) => res.json())
       .then((data) => {
         setLocations(data.features);

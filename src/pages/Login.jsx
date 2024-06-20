@@ -21,7 +21,7 @@
 //     try {
 //       // Call signIn function from useAuth hook
 //       await signIn(email, password).then(() => {
-//         fetch("http://localhost:3000/user", {
+//         fetch("https://edu-map-chemnitz-server.vercel.app/user", {
 //           method: "POST",
 //           headers: {
 //             "Content-Type": "application/json",
@@ -153,7 +153,9 @@ const Login = () => {
     const password = form.password.value;
 
     try {
-      const dbUser = await axios.get(`http://localhost:3000/user/${email}`);
+      const dbUser = await axios.get(
+        `https://edu-map-chemnitz-server.vercel.app/user/${email}`
+      );
       if (dbUser?.data?.isDeleted) {
         return swal(
           "User is disabled by the admin. Please contact the admin for more details."
@@ -161,7 +163,7 @@ const Login = () => {
       }
 
       await signIn(email, password).then(() => {
-        fetch("http://localhost:3000/user", {
+        fetch("https://edu-map-chemnitz-server.vercel.app/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

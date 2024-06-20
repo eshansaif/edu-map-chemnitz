@@ -11,7 +11,7 @@ const AddSocialChildProjectsLocation = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/social-child-projects"
+          "https://edu-map-chemnitz-server.vercel.app/locations/social-child-projects"
         );
         setLocations(response?.data?.features);
       } catch (error) {
@@ -72,7 +72,7 @@ const AddSocialChildProjectsLocation = () => {
       if (willAdd) {
         try {
           const response = await axios.post(
-            "http://localhost:3000/locations/social-child-projects",
+            "https://edu-map-chemnitz-server.vercel.app/locations/social-child-projects",
             locationData,
             {
               headers: {

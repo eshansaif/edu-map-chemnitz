@@ -12,7 +12,7 @@ const GoogleLogin = () => {
           name: data?.user?.displayName,
           isAdmin: 0,
         };
-        fetch("http://localhost:3000/user", {
+        fetch("https://edu-map-chemnitz-server.vercel.app/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

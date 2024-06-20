@@ -13,13 +13,15 @@ const EditRecipe = () => {
   useEffect(() => {
     async function load() {
       const categoriesData = await axios.get(
-        "http://localhost:3000/categories"
+        "https://edu-map-chemnitz-server.vercel.app/categories"
       );
       if (categoriesData?.status === 200) {
         setCategories(categoriesData?.data);
       }
 
-      const recipeData = await axios.get(`http://localhost:3000/recipes/${id}`);
+      const recipeData = await axios.get(
+        `https://edu-map-chemnitz-server.vercel.app/recipes/${id}`
+      );
       if (recipeData?.status === 200) {
         setRecipeDetails(recipeData?.data);
       }
@@ -47,11 +49,15 @@ const EditRecipe = () => {
       description,
     };
 
-    await axios.patch(`http://localhost:3000/recipes/${id}`, recipeData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await axios.patch(
+      `https://edu-map-chemnitz-server.vercel.app/recipes/${id}`,
+      recipeData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     swal(
       "Recipe Edited!",
       `You have updated "${title}" successfully!`,

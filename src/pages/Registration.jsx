@@ -31,7 +31,9 @@ const Registration = () => {
 
     // console.log(email, password, confirm_password);
 
-    const dbUser = await axios.get(`http://localhost:3000/user/${email}`);
+    const dbUser = await axios.get(
+      `https://edu-map-chemnitz-server.vercel.app/user/${email}`
+    );
 
     // console.log(dbUser.data.email);
 
@@ -49,7 +51,7 @@ const Registration = () => {
                 isAdmin: 0,
                 password: password,
               };
-              fetch("http://localhost:3000/user", {
+              fetch("https://edu-map-chemnitz-server.vercel.app/user", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

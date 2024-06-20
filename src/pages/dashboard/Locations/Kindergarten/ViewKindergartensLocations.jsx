@@ -9,7 +9,7 @@ const ViewKindergartensLocations = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/kindergartens"
+          "https://edu-map-chemnitz-server.vercel.app/locations/kindergartens"
         );
         setLocations(response?.data?.features?.reverse());
       } catch (error) {
@@ -32,7 +32,7 @@ const ViewKindergartensLocations = () => {
       if (willAdd) {
         try {
           const response = await axios.delete(
-            `http://localhost:3000/location/kindergarten/${id}`
+            `https://edu-map-chemnitz-server.vercel.app/location/kindergarten/${id}`
           );
           console.log("Location deleted response:", response);
           swal("You Have Removed the Location Successfully!", {

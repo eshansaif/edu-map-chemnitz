@@ -8,7 +8,9 @@ const MyFavList = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/user/favorite/${user?.email}`)
+      fetch(
+        `https://edu-map-chemnitz-server.vercel.app/user/favorite/${user?.email}`
+      )
         .then((res) => res.json())
         .then((data) => setMyFavList(data.reverse()));
     }
@@ -25,7 +27,7 @@ const MyFavList = () => {
       if (willDelete) {
         try {
           const response = await fetch(
-            `http://localhost:3000/user/favorite/${user?.email}/${locationId}`,
+            `https://edu-map-chemnitz-server.vercel.app/user/favorite/${user?.email}/${locationId}`,
             {
               method: "DELETE",
             }

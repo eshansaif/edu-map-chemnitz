@@ -10,7 +10,7 @@ const AddKindergartensLocation = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/kindergartens"
+          "https://edu-map-chemnitz-server.vercel.app/locations/kindergartens"
         );
         setLocations(response?.data?.features);
       } catch (error) {
@@ -83,7 +83,7 @@ const AddKindergartensLocation = () => {
       if (willAdd) {
         try {
           const response = await axios.post(
-            "http://localhost:3000/locations/kindergartens",
+            "https://edu-map-chemnitz-server.vercel.app/locations/kindergartens",
             locationData,
             {
               headers: {

@@ -8,7 +8,9 @@ const SocialTeenagerProjects = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/locations/social-teenager-projects")
+    fetch(
+      "https://edu-map-chemnitz-server.vercel.app/locations/social-teenager-projects"
+    )
       .then((response) => response.json())
       .then((data) => {
         setLocations(data.features);

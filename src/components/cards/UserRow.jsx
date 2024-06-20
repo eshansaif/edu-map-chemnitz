@@ -20,7 +20,7 @@ export default function UserRow({ user, setUsers, users }) {
         if (willDelete) {
           axios
             .patch(
-              `http://localhost:3000/users/soft-delete/${id}`,
+              `https://edu-map-chemnitz-server.vercel.app/users/soft-delete/${id}`,
               {},
               {
                 headers: {
@@ -54,7 +54,7 @@ export default function UserRow({ user, setUsers, users }) {
   const handleStatusChange = async (id, status) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/users/${id}/status`,
+        `https://edu-map-chemnitz-server.vercel.app/users/${id}/status`,
         { status },
         {
           headers: {
@@ -75,7 +75,7 @@ export default function UserRow({ user, setUsers, users }) {
   const handleToggleAdmin = async (id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/users/${id}/toggle-admin`,
+        `https://edu-map-chemnitz-server.vercel.app/users/${id}/toggle-admin`,
         {},
         {
           headers: {

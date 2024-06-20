@@ -12,7 +12,9 @@ const UserDetails = () => {
 
   useEffect(() => {
     async function load() {
-      const recipeData = await axios.get(`http://localhost:3000/users/${id}`);
+      const recipeData = await axios.get(
+        `https://edu-map-chemnitz-server.vercel.app/users/${id}`
+      );
       // console.log(recipeData.data);
       if (recipeData?.status === 200) {
         setUserDetails(recipeData?.data);

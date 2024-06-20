@@ -30,7 +30,7 @@ export default function EditProfile() {
 
   useEffect(() => {
     if (id && token) {
-      fetch(`http://localhost:3000/user/get/${id}`, {
+      fetch(`https://edu-map-chemnitz-server.vercel.app/user/get/${id}`, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ export default function EditProfile() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/user/${formData.email}`,
+        `https://edu-map-chemnitz-server.vercel.app/user/${formData.email}`,
         {
           method: "PATCH",
           headers: {

@@ -9,7 +9,7 @@ const ViewSocialTeenagerProjectsLocations = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/social-teenager-projects"
+          "https://edu-map-chemnitz-server.vercel.app/locations/social-teenager-projects"
         );
         setLocations(response?.data?.features?.reverse());
       } catch (error) {
@@ -32,7 +32,7 @@ const ViewSocialTeenagerProjectsLocations = () => {
       if (willAdd) {
         try {
           const response = await axios.delete(
-            `http://localhost:3000/location/social-teenager-project/${id}`
+            `https://edu-map-chemnitz-server.vercel.app/location/social-teenager-project/${id}`
           );
           console.log("Location deleted response:", response);
           swal("You Have Removed the Location Successfully!", {

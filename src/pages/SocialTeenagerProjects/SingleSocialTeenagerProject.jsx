@@ -15,7 +15,7 @@ const SingleSocialTeenagerProject = ({ location }) => {
       if (user) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/user/favorite/${user?.email}`
+            `https://edu-map-chemnitz-server.vercel.app/user/favorite/${user?.email}`
           );
           const favorites = response.data;
 
@@ -60,7 +60,7 @@ const SingleSocialTeenagerProject = ({ location }) => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/user/favorite",
+        "https://edu-map-chemnitz-server.vercel.app/user/favorite",
         favoriteData
       );
 

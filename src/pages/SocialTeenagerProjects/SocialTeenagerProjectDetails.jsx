@@ -45,7 +45,9 @@ const SocialTeenagerProjectDetails = () => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/locations/social-teenager-projects")
+    fetch(
+      "https://edu-map-chemnitz-server.vercel.app/locations/social-teenager-projects"
+    )
       .then((res) => res.json())
       .then((data) => {
         setLocations(data.features);

@@ -45,7 +45,7 @@ const KindergartenDetails = () => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/locations/kindergartens")
+    fetch("https://edu-map-chemnitz-server.vercel.app/locations/kindergartens")
       .then((res) => res.json())
       .then((data) => {
         setLocations(data.features);

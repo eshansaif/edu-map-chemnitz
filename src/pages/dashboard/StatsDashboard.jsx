@@ -31,7 +31,9 @@ const StatsDashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user-stats");
+        const response = await axios.get(
+          "https://edu-map-chemnitz-server.vercel.app/user-stats"
+        );
         setStats(response.data);
       } catch (error) {
         console.error("Error fetching stats:", error);
@@ -41,7 +43,7 @@ const StatsDashboard = () => {
     const fetchLocationStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/location-stats"
+          "https://edu-map-chemnitz-server.vercel.app/location-stats"
         );
         setLocationStats(response.data);
       } catch (error) {
