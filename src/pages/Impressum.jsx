@@ -47,10 +47,10 @@ const Impressum = () => {
                 <br />
                 <strong>Website:</strong>{" "}
                 <a
-                  href="http://www.edumapchemnitz.com"
+                  href="https://chemnitz-map-app.web.app/"
                   className="text-blue-500"
                 >
-                  www.edumapchemnitz.com
+                  https://chemnitz-map-app.web.app
                 </a>
               </p>
             </div>
