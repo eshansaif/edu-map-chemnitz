@@ -2,8 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import useAuth from "../../../../hooks/useAuth";
-
-const AddSocialTeenagerProjectsLocation = () => {
+const AddKindergartensLocation = () => {
   const { user } = useAuth();
   const [locations, setLocations] = useState([]);
 
@@ -11,7 +10,7 @@ const AddSocialTeenagerProjectsLocation = () => {
     const fetchLocations = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/locations/social-teenager-projects"
+          "http://localhost:3000/locations/kindergartens"
         );
         setLocations(response?.data?.features);
       } catch (error) {
@@ -24,14 +23,22 @@ const AddSocialTeenagerProjectsLocation = () => {
   const handleCreateLocation = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const TRAEGER = form.TRAEGER.value;
-    const LEISTUNGEN = form.LEISTUNGEN.value;
+    const BEZEICHNUNG = form.BEZEICHNUNG.value;
+    const KURZBEZEICHNUNG = form.KURZBEZEICHNUNG.value;
     const STRASSE = form.STRASSE.value;
+    const STRSCHL = form.STRSCHL.value;
+    const HAUSBEZ = form.HAUSBEZ.value;
     const PLZ = form.PLZ.value;
     const ORT = form.ORT.value;
+    const HORT = form.HORT.value;
+    const KITA = form.KITA.value;
+    const URL = form.URL.value;
     const TELEFON = form.TELEFON.value;
     const EMAIL = form.EMAIL.value;
     const FAX = form.FAX.value;
+    const BARRIEREFREI = form.BARRIEREFREI.value;
+    const INTEGRATIV = form.INTEGRATIV.value;
+    const TRAEGER = form.TRAEGER.value;
     const coordinates = [
       parseFloat(form.longitude.value),
       parseFloat(form.latitude.value),
@@ -44,14 +51,22 @@ const AddSocialTeenagerProjectsLocation = () => {
         coordinates,
       },
       properties: {
-        TRAEGER,
-        LEISTUNGEN,
+        BEZEICHNUNG,
+        KURZBEZEICHNUNG,
         STRASSE,
+        STRSCHL,
+        HAUSBEZ,
         PLZ,
         ORT,
+        HORT,
+        KITA,
+        URL,
         TELEFON,
-        FAX,
         EMAIL,
+        FAX,
+        BARRIEREFREI,
+        INTEGRATIV,
+        TRAEGER,
         userEmail: user?.email,
       },
     };
@@ -68,7 +83,7 @@ const AddSocialTeenagerProjectsLocation = () => {
       if (willAdd) {
         try {
           const response = await axios.post(
-            "http://localhost:3000/locations/social-teenager-projects",
+            "http://localhost:3000/locations/kindergartens",
             locationData,
             {
               headers: {
@@ -97,29 +112,29 @@ const AddSocialTeenagerProjectsLocation = () => {
   return (
     <div className="w-full px-16">
       <h1 className="text-4xl mb-4 text-center underline">
-        Add Social Teenager Project Location
+        Add Kindergartens Location
       </h1>
       <form onSubmit={handleCreateLocation} className="w-full">
         <div className="mb-4">
-          <label htmlFor="TRAEGER">Träger </label>
+          <label htmlFor="BEZEICHNUNG">BEZEICHNUNG </label>
           <input
             required
             type="text"
-            name="TRAEGER"
+            name="BEZEICHNUNG"
             className="w-full py-3 px-5 border"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="LEISTUNGEN">Leistungen </label>
+          <label htmlFor="KURZBEZEICHNUNG">KURZBEZEICHNUNG </label>
           <input
             required
             type="text"
-            name="LEISTUNGEN"
+            name="KURZBEZEICHNUNG"
             className="w-full py-3 px-5 border"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="STRASSE">Straße </label>
+          <label htmlFor="STRASSE">STRASSE </label>
           <input
             required
             type="text"
@@ -127,6 +142,25 @@ const AddSocialTeenagerProjectsLocation = () => {
             className="w-full py-3 px-5 border"
           />
         </div>
+        <div className="mb-4">
+          <label htmlFor="STRSCHL">STRSCHL </label>
+          <input
+            required
+            type="text"
+            name="STRSCHL"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="HAUSBEZ">HAUSBEZ </label>
+          <input
+            required
+            type="text"
+            name="HAUSBEZ"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+
         <div className="mb-4">
           <label htmlFor="PLZ">PLZ </label>
           <input
@@ -142,6 +176,33 @@ const AddSocialTeenagerProjectsLocation = () => {
             required
             type="text"
             name="ORT"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="HORT">HORT </label>
+          <input
+            required
+            type="number"
+            name="HORT"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="KITA">KITA </label>
+          <input
+            required
+            type="number"
+            name="KITA"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="URL">URL </label>
+          <input
+            required
+            type="text"
+            name="URL"
             className="w-full py-3 px-5 border"
           />
         </div>
@@ -168,6 +229,32 @@ const AddSocialTeenagerProjectsLocation = () => {
           <input type="text" name="FAX" className="w-full py-3 px-5 border" />
         </div>
         <div className="mb-4">
+          <label htmlFor="BARRIEREFREI">BARRIEREFREI </label>
+          <input
+            type="text"
+            name="BARRIEREFREI"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="INTEGRATIV">INTEGRATIV </label>
+          <input
+            type="text"
+            name="INTEGRATIV"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="TRAEGER">TRAEGER </label>
+          <input
+            type="text"
+            name="TRAEGER"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+
+        <div className="mb-4">
           <label htmlFor="latitude">Latitude </label>
           <input
             required
@@ -191,7 +278,7 @@ const AddSocialTeenagerProjectsLocation = () => {
           <input
             required
             type="submit"
-            value={"Add Location"}
+            value={"Add Kindergarten Location"}
             className="w-full btn py-3 px-5 border btn-neutral"
           />
         </div>
@@ -200,4 +287,4 @@ const AddSocialTeenagerProjectsLocation = () => {
   );
 };
 
-export default AddSocialTeenagerProjectsLocation;
+export default AddKindergartensLocation;

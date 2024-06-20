@@ -31,6 +31,8 @@ import AddSchoolsLocation from "../pages/dashboard/Locations/SchoolLocation/AddS
 import ViewSchoolsLocations from "../pages/dashboard/Locations/SchoolLocation/ViewSchoolsLocations";
 import AddSocialChildProjectsLocation from "../pages/dashboard/Locations/SocialChildProject/AddSocialChildProjectsLocation";
 import ViewSocialChildProjectsLocations from "../pages/dashboard/Locations/SocialChildProject/ViewSocialChildProjectsLocations";
+import AddKindergartensLocation from "../pages/dashboard/Locations/Kindergarten/AddKindergartensLocation";
+import ViewKindergartensLocations from "../pages/dashboard/Locations/Kindergarten/ViewKindergartensLocations";
 
 export const router = createBrowserRouter([
   {
@@ -113,6 +115,14 @@ export const router = createBrowserRouter([
       {
         path: "view-location/schools",
         element: <ViewSchoolsLocations />,
+      },
+      {
+        path: "add-location/kindergarten",
+        element: <AddKindergartensLocation />,
+      },
+      {
+        path: "view-location/kindergartens",
+        element: <ViewKindergartensLocations />,
       },
       {
         path: "add-location/social-child-project",

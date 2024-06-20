@@ -45,9 +45,7 @@ const KindergartenDetails = () => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    fetch(
-      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Kindertageseinrichtungen_Sicht/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
-    )
+    fetch("http://localhost:3000/locations/kindergartens")
       .then((res) => res.json())
       .then((data) => {
         setLocations(data.features);
@@ -66,7 +64,9 @@ const KindergartenDetails = () => {
 
   useEffect(() => {
     if (locations.length > 0) {
-      const single = locations.find((location) => location.id == id);
+      const single = locations.find(
+        (location) => location.id == id || location?._id
+      );
       setDetails(single);
     }
   }, [locations, id]);
@@ -116,14 +116,15 @@ const KindergartenDetails = () => {
           <p>
             Address: {details?.properties?.STRASSE}, {details?.properties?.ORT}
           </p>
-          <p>Type: {details?.properties?.TYP}</p>
-          <p>Art: {details?.properties?.ART}</p>
-          <p>Standorttyp: {details?.properties?.STANDORTTYP}</p>
+          <p>KURZBEZEICHNUNG: {details?.properties?.KURZBEZEICHNUNG}</p>
+          <p>STRSCHL: {details?.properties?.STRSCHL}</p>
+          <p>HAUSBEZ: {details?.properties?.HAUSBEZ}</p>
           <p>
             Telephone:{" "}
             <span type="telephone">{details?.properties?.TELEFON}</span>
           </p>
           <p>Email: {details?.properties?.EMAIL}</p>
+          <p>URL: {details?.properties?.URL}</p>
           {distance && (
             <p className="font-bold">
               Distance from current location: {distance} km

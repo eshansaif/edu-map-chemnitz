@@ -77,6 +77,7 @@ const AddSchoolsLocation = () => {
         Creator,
         GlobalID,
         CreationDate,
+        userEmail: user?.email,
       },
     };
 

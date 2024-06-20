@@ -56,6 +56,7 @@ const AddSocialChildProjectsLocation = () => {
         TELEFON,
         FAX,
         EMAIL,
+        userEmail: user?.email,
       },
     };
 
