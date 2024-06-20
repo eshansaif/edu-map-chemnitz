@@ -84,7 +84,7 @@ const SingleSchool = ({ location }) => {
     <div className="card w-80 bg-base-100 shadow-xl">
       <div className="card-body">
         <h2 className="card-title">{location?.properties?.BEZEICHNUNG}</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <p className="text-sm  font-mono">(School)</p>
         <div className="card-actions justify-end flex">
           <Link to={`/school/${location.id || location?._id}`}>
             <button className="btn btn-primary">View Details</button>
