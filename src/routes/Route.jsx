@@ -27,6 +27,7 @@ import Documentation from "../pages/Doucmentation";
 import LinkToSources from "../pages/LinkToSources";
 import AddSocialTeenagerProjectsLocation from "../pages/dashboard/Locations/SocialTeenagerProject/AddSocialTeenagerProjectsLocation";
 import ViewSocialTeenagerProjectsLocations from "../pages/dashboard/Locations/SocialTeenagerProject/ViewSocialTeenagerProjectsLocations";
+import AddSchoolsLocation from "../pages/dashboard/Locations/SchoolLocation/AddSchoolsLocation";
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +102,14 @@ export const router = createBrowserRouter([
       {
         path: "stats",
         element: <StatsDashboard />,
+      },
+      {
+        path: "add-location/school",
+        element: <AddSchoolsLocation />,
+      },
+      {
+        path: "view-location/schools",
+        element: <ViewSocialTeenagerProjectsLocations />,
       },
       {
         path: "add-location/social-teenager-project",
