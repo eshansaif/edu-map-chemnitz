@@ -46,7 +46,7 @@ const KindergartenDetails = () => {
 
   useEffect(() => {
     fetch(
-      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Schulen_OpenData/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson#"
+      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Kindertageseinrichtungen_Sicht/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
     )
       .then((res) => res.json())
       .then((data) => {

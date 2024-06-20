@@ -7,6 +7,7 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet.fullscreen";
 import "leaflet.fullscreen/Control.FullScreen.css";
 import LoadingSpinner from "../components/smallComponents/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 // Fix marker icon issue with Leaflet and Webpack
 delete L.Icon.Default.prototype._getIconUrl;
@@ -40,7 +41,7 @@ const CategoryMapViewer = () => {
       try {
         const res = await fetch(categoryUrls[selectedCategory]);
         const data = await res.json();
-        setLocations(data.features);
+        setLocations(data?.features?.reverse());
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -89,15 +90,19 @@ const CategoryMapViewer = () => {
           </select>
         </div>
         <ul className="space-y-2  md:block hidden">
-          {locations.map((location) => (
-            <li key={location.id} className="p-2 border-b border-gray-300">
-              {selectedCategory == "schools" && location.properties.BEZEICHNUNG}
+          {locations?.map((location) => (
+            <li
+              key={location?.id || location?._id}
+              className="p-2 border-b border-gray-300"
+            >
+              {selectedCategory == "schools" &&
+                location?.properties?.BEZEICHNUNG}
               {selectedCategory == "kindergarden" &&
-                location.properties.BEZEICHNUNG}
+                location?.properties?.BEZEICHNUNG}
               {selectedCategory == "social_child_projects" &&
-                location.properties.TRAEGER}
+                location?.properties?.TRAEGER}
               {selectedCategory == "social_teenager_projects" &&
-                location.properties.TRAEGER}
+                location?.properties?.TRAEGER}
             </li>
           ))}
         </ul>
@@ -114,28 +119,59 @@ const CategoryMapViewer = () => {
           />
           {locations.map((location) => (
             <Marker
-              key={location.id}
+              key={location?.id || location?._id}
               position={[
-                location.geometry.coordinates[1],
-                location.geometry.coordinates[0],
+                location?.geometry?.coordinates[1],
+                location?.geometry?.coordinates[0],
               ]}
             >
               <Popup>
-                <b>{location.properties.BEZEICHNUNG}</b>
+                <b>
+                  {location?.properties?.BEZEICHNUNG ||
+                    location?.properties?.TRAEGER}
+                </b>
                 <br />
-                Address: {location.properties.STRASSE},{" "}
+                Address: {location?.properties?.STRASSE},{" "}
                 {location.properties.ORT}
                 <br />
-                Type: {location.properties.TYP}
+                Type: {location?.properties?.TYP}
                 <br />
-                Art: {location.properties.ART}
+                Art: {location?.properties?.ART}
                 <br />
-                Standorttyp: {location.properties.STANDORTTYP}
+                Standorttyp: {location?.properties?.STANDORTTYP}
                 <br />
-                Telephone: {location.properties.TELEFON}
+                Telephone: {location?.properties?.TELEFON}
                 <br />
-                Email: {location.properties.EMAIL}
+                Email: {location?.properties?.EMAIL}
                 <br />
+                {selectedCategory == "schools" && (
+                  <Link to={`../school/${location?.id || location?._id}`}>
+                    View More Info
+                  </Link>
+                )}
+                {selectedCategory == "kindergarden" && (
+                  <Link to={`../kindergarten/${location?.id || location?._id}`}>
+                    View More Info
+                  </Link>
+                )}
+                {selectedCategory == "social_child_projects" && (
+                  <Link
+                    to={`../social-child-project/${
+                      location?.id || location?._id
+                    }`}
+                  >
+                    View More Info
+                  </Link>
+                )}
+                {selectedCategory == "social_teenager_projects" && (
+                  <Link
+                    to={`../social-teenager-project/${
+                      location?.id || location?._id
+                    }`}
+                  >
+                    View More Info
+                  </Link>
+                )}
               </Popup>
             </Marker>
           ))}
