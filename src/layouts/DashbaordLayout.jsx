@@ -100,24 +100,24 @@ export default function DashbaordLayout() {
                     )}
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/add-location">
+                    {({ isActive }) => (
+                      <span
+                        className={
+                          isActive
+                            ? "text-blue-500 font-semibold underline"
+                            : "font-bold"
+                        }
+                      >
+                        Add Location
+                      </span>
+                    )}
+                  </NavLink>
+                </li>
               </>
             )}
 
-            <li>
-              <NavLink to="/dashboard/add-location">
-                {({ isActive }) => (
-                  <span
-                    className={
-                      isActive
-                        ? "text-blue-500 font-semibold underline"
-                        : "font-bold"
-                    }
-                  >
-                    Add Location
-                  </span>
-                )}
-              </NavLink>
-            </li>
             <li>
               {/* <Link to={"/dashboard/add-recipe"}>Add Recipe</Link> */}
               <NavLink to={`/dashboard/my-favorite/${user?.email}`}>

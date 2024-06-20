@@ -26,7 +26,7 @@ const categoryUrls = {
   social_child_projects:
     "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Schulsozialarbeit_FL_1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
   social_teenager_projects:
-    "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Jugendberufshilfen_FL_1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+    "http://localhost:3000/locations/social-teenager-projects",
 };
 
 const CategoryMapViewer = () => {

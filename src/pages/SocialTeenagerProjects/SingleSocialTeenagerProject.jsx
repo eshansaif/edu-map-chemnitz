@@ -19,7 +19,7 @@ const SingleSocialTeenagerProject = ({ location }) => {
           );
           const favorites = response.data;
 
-          console.log(favorites);
+          // console.log(favorites);
 
           // Check if the current location is already in the user's favorites, including the category in the check
           const alreadyFavorite = favorites.some(
@@ -86,7 +86,9 @@ const SingleSocialTeenagerProject = ({ location }) => {
         <h2 className="card-title">{location?.properties?.TRAEGER}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end flex">
-          <Link to={`/social-teenager-project/${location.id}`}>
+          <Link
+            to={`/social-teenager-project/${location?.id || location?._id}`}
+          >
             <button className="btn btn-primary">View Details</button>
           </Link>
           <button

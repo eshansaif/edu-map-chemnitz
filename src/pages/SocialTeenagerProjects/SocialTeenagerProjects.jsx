@@ -8,9 +8,7 @@ const SocialTeenagerProjects = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch(
-      "https://services6.arcgis.com/jiszdsDupTUO3fSM/arcgis/rest/services/Jugendberufshilfen_FL_1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson"
-    )
+    fetch("http://localhost:3000/locations/social-teenager-projects")
       .then((response) => response.json())
       .then((data) => {
         setLocations(data.features);
@@ -61,7 +59,7 @@ const SocialTeenagerProjects = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filteredLocations.map((location) => (
             <SingleSocialTeenagerProject
-              key={location.id}
+              key={location?.id || location?._id}
               location={location}
             />
           ))}

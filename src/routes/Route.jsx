@@ -25,7 +25,7 @@ import MyFavList from "../pages/dashboard/MyFavList";
 import Impressum from "../pages/Impressum";
 import Documentation from "../pages/Doucmentation";
 import LinkToSources from "../pages/LinkToSources";
-import AddLocation from "../pages/dashboard/AddLocation";
+import AddSocialTeenagerProjectsLocation from "../pages/dashboard/Locations/AddSocialTeenagerProjectsLocation";
 
 export const router = createBrowserRouter([
   {
@@ -102,8 +102,8 @@ export const router = createBrowserRouter([
         element: <StatsDashboard />,
       },
       {
-        path: "add-location",
-        element: <AddLocation />,
+        path: "add-location/social-teenager-project",
+        element: <AddSocialTeenagerProjectsLocation />,
       },
       {
         path: "edit-recipe/:id",

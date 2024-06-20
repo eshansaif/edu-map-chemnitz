@@ -92,7 +92,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl font-mono">
-          EduMap <span className="hidden md:block">Chemnitz</span>
+          EduMap Chemnitz
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -149,7 +149,7 @@ const Navbar = () => {
         <div className="navbar-end flex gap-4">
           <Link
             to={"/login"}
-            className="btn btn-success font-bold text-white flex justify-center items-center"
+            className="btn btn-neutral font-bold text-white flex justify-center items-center"
           >
             <BiLogIn className="font-bold text-lg" />
             <span>Login</span>
@@ -158,7 +158,7 @@ const Navbar = () => {
       ) : (
         <div
           className="navbar-end flex gap-4 tooltip tooltip-bottom"
-          data-tip={`${dbUser?.name}, Please on the image to see more options to navigate`}
+          data-tip={`${dbUser?.name}, Please click on the image to see more options to navigate`}
         >
           <div className=" dropdown dropdown-end">
             <div
@@ -183,7 +183,7 @@ const Navbar = () => {
             >
               <li className="font-bold">
                 <Link to="/dashboard">
-                  <a className="justify-between ">Profile</a>
+                  <a className="justify-between ">Dashboard</a>
                 </Link>
               </li>
               <li className="font-bold">
