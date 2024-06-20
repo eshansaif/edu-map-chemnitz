@@ -48,8 +48,8 @@ export default function ManageAllUsers() {
   });
 
   return (
-    <div className="overflow-x-auto w-full px-16 mt-10">
-      <h1 className="text-3xl mb-4">Manage All Users</h1>
+    <div className="overflow-x-auto w-full px-16 mt-3">
+      <h1 className="text-3xl mb-4 underline text-center">Manage All Users </h1>
       <div className="md:flex gap-2 justify-between mb-4">
         <div>
           <input

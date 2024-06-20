@@ -5,10 +5,12 @@ import useAuth from "../hooks/useAuth";
 import { LuLogOut } from "react-icons/lu";
 import { useEffect, useState } from "react";
 
-export default function DashbaordLayout() {
+export default function DashboardLayout() {
   const { logout, user, loading } = useAuth();
   const navigate = useNavigate();
   const [dbUser, setDbUser] = useState(null);
+  const [isAddLocationsOpen, setIsAddLocationsOpen] = useState(false);
+  const [isViewLocationsOpen, setIsViewLocationsOpen] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3000/user/${user?.email}`)
@@ -21,11 +23,19 @@ export default function DashbaordLayout() {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
+  const toggleAddLocations = () => {
+    setIsAddLocationsOpen((prev) => !prev);
+  };
+  const toggleViewLocations = () => {
+    setIsViewLocationsOpen((prev) => !prev);
+  };
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
-        <div className=" mb-4">
+        <div className="mb-4">
           <label
             htmlFor="my-drawer-2"
             className="btn btn-neutral drawer-button lg:hidden"
@@ -58,9 +68,7 @@ export default function DashbaordLayout() {
                 {({ isActive }) => (
                   <span
                     className={
-                      isActive
-                        ? "text-blue-500 font-semibold underline"
-                        : "font-bold"
+                      isActive ? "text-white font-semibold " : "font-bold"
                     }
                   >
                     Profile
@@ -75,9 +83,7 @@ export default function DashbaordLayout() {
                     {({ isActive }) => (
                       <span
                         className={
-                          isActive
-                            ? "text-blue-500 font-semibold underline"
-                            : "font-bold"
+                          isActive ? "text-white font-semibold " : "font-bold"
                         }
                       >
                         Stats
@@ -90,9 +96,7 @@ export default function DashbaordLayout() {
                     {({ isActive }) => (
                       <span
                         className={
-                          isActive
-                            ? "text-blue-500 font-semibold underline"
-                            : "font-bold"
+                          isActive ? "text-white font-semibold " : "font-bold"
                         }
                       >
                         Manage All Users
@@ -101,32 +105,152 @@ export default function DashbaordLayout() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/add-location">
-                    {({ isActive }) => (
-                      <span
-                        className={
-                          isActive
-                            ? "text-blue-500 font-semibold underline"
-                            : "font-bold"
-                        }
-                      >
-                        Add Location
-                      </span>
-                    )}
-                  </NavLink>
+                  <button className="font-bold" onClick={toggleAddLocations}>
+                    Add Locations
+                  </button>
+                  {isAddLocationsOpen && (
+                    <ul className="pl-4">
+                      <li>
+                        <NavLink to="/dashboard/add-location/school">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              Add Schools Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/add-location/kindergarten">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              Add Kindergartens Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/add-location/social-child-project">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              Add Social Child Projects Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/add-location/social-teenager-project">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              Add Social Teenager Projects Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <button className="font-bold" onClick={toggleViewLocations}>
+                    View Locations
+                  </button>
+                  {isViewLocationsOpen && (
+                    <ul className="pl-4">
+                      <li>
+                        <NavLink to="/dashboard/view-location/schools">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              View Schools Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/view-location/kindergartens">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              View Kindergartens Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/view-location/social-child-projects">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              View Social Child Projects Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/dashboard/view-location/social-teenager-projects">
+                          {({ isActive }) => (
+                            <span
+                              className={
+                                isActive
+                                  ? "text-white font-semibold "
+                                  : "font-bold"
+                              }
+                            >
+                              View Social Teenager Projects Location
+                            </span>
+                          )}
+                        </NavLink>
+                      </li>
+                    </ul>
+                  )}
                 </li>
               </>
             )}
 
             <li>
-              {/* <Link to={"/dashboard/add-recipe"}>Add Recipe</Link> */}
               <NavLink to={`/dashboard/my-favorite/${user?.email}`}>
                 {({ isActive }) => (
                   <span
                     className={
-                      isActive
-                        ? "text-blue-500 font-semibold underline"
-                        : "font-bold"
+                      isActive ? "text-white font-semibold " : "font-bold"
                     }
                   >
                     Favorite Locations

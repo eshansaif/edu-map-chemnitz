@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import swal from "sweetalert";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../../hooks/useAuth";
 
 const AddSocialTeenagerProjectsLocation = () => {
   const { user } = useAuth();
@@ -30,6 +30,7 @@ const AddSocialTeenagerProjectsLocation = () => {
     const PLZ = form.PLZ.value;
     const ORT = form.ORT.value;
     const TELEFON = form.TELEFON.value;
+    const EMAIL = form.EMAIL.value;
     const FAX = form.FAX.value;
     const coordinates = [
       parseFloat(form.longitude.value),
@@ -50,7 +51,7 @@ const AddSocialTeenagerProjectsLocation = () => {
         ORT,
         TELEFON,
         FAX,
-        email: user?.email,
+        EMAIL,
       },
     };
 
@@ -94,7 +95,9 @@ const AddSocialTeenagerProjectsLocation = () => {
 
   return (
     <div className="w-full px-16">
-      <h1 className="text-4xl mb-4">Add Location</h1>
+      <h1 className="text-4xl mb-4 text-center underline">
+        Add Social Teenager Project Location
+      </h1>
       <form onSubmit={handleCreateLocation} className="w-full">
         <div className="mb-4">
           <label htmlFor="TRAEGER">Träger </label>
@@ -151,6 +154,15 @@ const AddSocialTeenagerProjectsLocation = () => {
           />
         </div>
         <div className="mb-4">
+          <label htmlFor="EMAIL">EMAIL </label>
+          <input
+            required
+            type="text"
+            name="EMAIL"
+            className="w-full py-3 px-5 border"
+          />
+        </div>
+        <div className="mb-4">
           <label htmlFor="FAX">Fax </label>
           <input type="text" name="FAX" className="w-full py-3 px-5 border" />
         </div>
@@ -183,16 +195,6 @@ const AddSocialTeenagerProjectsLocation = () => {
           />
         </div>
       </form>
-      <h2 className="text-3xl mt-8 mb-4">All Locations</h2>
-      <ol>
-        {locations.map((location, index) => (
-          <li key={index}>
-            <strong>{location.properties.TRAEGER}</strong>:{" "}
-            {location.properties.ORT} -{" "}
-            {location.geometry.coordinates.join(", ")}
-          </li>
-        ))}
-      </ol>
     </div>
   );
 };

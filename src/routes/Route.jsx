@@ -25,7 +25,8 @@ import MyFavList from "../pages/dashboard/MyFavList";
 import Impressum from "../pages/Impressum";
 import Documentation from "../pages/Doucmentation";
 import LinkToSources from "../pages/LinkToSources";
-import AddSocialTeenagerProjectsLocation from "../pages/dashboard/Locations/AddSocialTeenagerProjectsLocation";
+import AddSocialTeenagerProjectsLocation from "../pages/dashboard/Locations/SocialTeenagerProject/AddSocialTeenagerProjectsLocation";
+import ViewSocialTeenagerProjectsLocations from "../pages/dashboard/Locations/SocialTeenagerProject/ViewSocialTeenagerProjectsLocations";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ export const router = createBrowserRouter([
       {
         path: "add-location/social-teenager-project",
         element: <AddSocialTeenagerProjectsLocation />,
+      },
+      {
+        path: "view-location/social-teenager-projects",
+        element: <ViewSocialTeenagerProjectsLocations />,
       },
       {
         path: "edit-recipe/:id",

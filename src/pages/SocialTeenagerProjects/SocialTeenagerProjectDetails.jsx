@@ -123,6 +123,9 @@ const SocialTeenagerProjectDetails = () => {
             <span type="telephone">{details?.properties?.TELEFON}</span>
           </p>
           <p>
+            Fax: <span type="telephone">{details?.properties?.FAX}</span>
+          </p>
+          <p>
             Email:{" "}
             {details?.properties?.EMAIL
               ? details?.properties?.EMAIL
