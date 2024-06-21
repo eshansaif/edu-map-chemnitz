@@ -15,7 +15,8 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 
 ## 🔗 Links
-Live Link: https://chemnitz-map-app.web.app/
+- Live Link: https://chemnitz-map-app.web.app/
+- Server Link: https://edu-map-chemnitz-server.vercel.app/
 
 
 ## Features
