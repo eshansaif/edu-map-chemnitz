@@ -91,7 +91,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl font-mono">
+        <Link to="/" className="btn btn-ghost md:text-xl font-mono">
           EduMap Chemnitz
         </Link>
       </div>

@@ -126,6 +126,11 @@ export default function UserRow({ user, setUsers, users }) {
           View
         </Link>
         <button
+          disabled={
+            user?.isAdmin === 1 && user?.email === "admin@chemnitz.com"
+              ? true
+              : false
+          }
           onClick={() => handleDelete(user?._id)}
           className="btn btn-xs btn-error"
         >
@@ -134,6 +139,11 @@ export default function UserRow({ user, setUsers, users }) {
       </td>
       <td>
         <button
+          disabled={
+            user?.isAdmin === 1 && user?.email === "admin@chemnitz.com"
+              ? true
+              : false
+          }
           onClick={() => handleToggleAdmin(user?._id)}
           className={`btn btn-sm text-xs  ${
             user?.isAdmin === 1 ? "btn-warning" : "btn-success"
